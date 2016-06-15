@@ -28,7 +28,7 @@
 <body>
 <div class="container">
   <form class="form-signin" method="post" action="/login">
-    <h2 class="form-signin-heading">登陆系统</h2>
+    <h3 class="form-signin-heading">登陆系统</h3>
     <div class="form-group">
       <label for="inputUsername" class="sr-only">用户名</label>
       <input type="text" id="inputUsername" name="user_name" class="form-control" placeholder="用户名" required autofocus>
