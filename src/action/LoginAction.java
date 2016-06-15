@@ -28,7 +28,6 @@ public class LoginAction extends ActionSupport{
         ActionContext ct = ActionContext.getContext();
         String user = request.getParameter("user_name");
         String pwd = request.getParameter("user_pwd");
-        System.out.println(user+"---------------------------------------------------------------------------"+pwd);
         if(user != null && pwd != null)
         {
             String type = UserDBHelper.login(user, pwd);

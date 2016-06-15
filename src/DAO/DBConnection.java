@@ -8,13 +8,16 @@ public class DBConnection {
     public static final String DATABASE = "BOOK_SALES";
     public static final String HOST = "172.16.21.36:1433";
     
-    public static Connection getConnection()
-    {
+    public static Connection getConnection() {
         String driverName = DRIVERNAME;  //加载JDBC驱动
         String dbURL = "jdbc:sqlserver://"+HOST+"; DatabaseName="+DATABASE;  //连接服务器和数据库
         try {
+            Class.forName(DRIVERNAME);
             return DriverManager.getConnection(dbURL, "sa", "517517");
         } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
             return null;
         }
