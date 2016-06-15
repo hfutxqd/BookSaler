@@ -33,7 +33,7 @@ public class LoginAction extends ActionSupport{
             String type = UserDBHelper.login(user, pwd);
             if(type != null)
             {
-                return SUCCESS;
+                return type;
             }
         }
         return LOGIN;
