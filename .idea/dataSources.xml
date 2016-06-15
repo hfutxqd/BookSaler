@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="3346408330">
+    <data-source source="LOCAL" name="SQL Server (Microsoft) - book_sales@172.16.21.36" uuid="1b75d853-3a60-4177-aa52-e718bdc6d464">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://172.16.21.36\dbo:1433;databaseName=book_sales</jdbc-url>
+      <driver-properties>
+        <property name="serverName" value="172.16.21.36" />
+        <property name="instanceName" value="book_sales" />
+      </driver-properties>
+    </data-source>
+  </component>
+</project>
