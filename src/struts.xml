@@ -13,5 +13,9 @@
             <result name="finance" type="redirect">/finance.jsp</result>
             <result name="login" type="redirect">/login.jsp</result>
         </action>
+
+        <action name="test" class="action.TestAction">
+            <result name="login">/index.jsp</result>
+        </action>
     </package>
 </struts>
