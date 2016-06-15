@@ -15,9 +15,9 @@ import java.util.ArrayList;
  *
  * @author Henry
  */
-public class SaleManngerDataBase {
+public class StockOutDBHelper {
     Connection connection;
-    public SaleManngerDataBase(Connection connection)
+    public StockOutDBHelper(Connection connection)
     {
         this.connection = connection;
     }
@@ -26,17 +26,17 @@ public class SaleManngerDataBase {
     {
         Statement statement = connection.createStatement();
         ResultSet resultSet = 
-        statement.executeQuery("select * from v_sale_record where id="+orderNo);
+        statement.executeQuery("select * from v_stock_out_record where id="+orderNo);
         while (resultSet.next()) {
             String[] resStrings = new String[7];
             resStrings[0] = resultSet.getString("id");
-            resStrings[1] = resultSet.getString("name");
+            resStrings[1] = resultSet.getString("book_name");
             resStrings[2] = resultSet.getString("ISBN");
             resStrings[3] = resultSet.getString("price");
-            resStrings[4] = resultSet.getString("sale_size");
+            resStrings[4] = resultSet.getString("stock_out_size");
             resStrings[5] = resultSet.getString("total_price");
-            resStrings[6] = resultSet.getString("sale_date");
-            return  resStrings;
+            resStrings[6] = resultSet.getString("stock_out_date");
+            return resStrings;
         }
         resultSet.close();
         statement.close();
@@ -48,17 +48,17 @@ public class SaleManngerDataBase {
         ArrayList<String[]> reList = new ArrayList<>();
         Statement statement = connection.createStatement();
         ResultSet resultSet = 
-        statement.executeQuery("select * from v_sale_record where ISBN="+ISBN
-                +" order by sale_date;");
+        statement.executeQuery("select * from v_stock_out_record where ISBN="
+        +ISBN);
         while (resultSet.next()) {
             String[] resStrings = new String[7];
             resStrings[0] = resultSet.getString("id");
-            resStrings[1] = resultSet.getString("name");
+            resStrings[1] = resultSet.getString("book_name");
             resStrings[2] = resultSet.getString("ISBN");
             resStrings[3] = resultSet.getString("price");
-            resStrings[4] = resultSet.getString("sale_size");
+            resStrings[4] = resultSet.getString("stock_out_size");
             resStrings[5] = resultSet.getString("total_price");
-            resStrings[6] = resultSet.getString("sale_date");
+            resStrings[6] = resultSet.getString("stock_out_date");
             reList.add(resStrings);
         }
         resultSet.close();
@@ -66,21 +66,21 @@ public class SaleManngerDataBase {
         return reList;
     }
     
-    public ArrayList<String[]> getAllBooks() throws SQLException
+    public ArrayList<String[]> getAll() throws SQLException
     {
         ArrayList<String[]> reList = new ArrayList<>();
         Statement statement = connection.createStatement();
         ResultSet resultSet = 
-        statement.executeQuery("select * from v_sale_record order by sale_date;");
+        statement.executeQuery("select * from v_stock_out_record");
         while (resultSet.next()) {
             String[] resStrings = new String[7];
             resStrings[0] = resultSet.getString("id");
-            resStrings[1] = resultSet.getString("name");
+            resStrings[1] = resultSet.getString("book_name");
             resStrings[2] = resultSet.getString("ISBN");
             resStrings[3] = resultSet.getString("price");
-            resStrings[4] = resultSet.getString("sale_size");
+            resStrings[4] = resultSet.getString("stock_out_size");
             resStrings[5] = resultSet.getString("total_price");
-            resStrings[6] = resultSet.getString("sale_date");
+            resStrings[6] = resultSet.getString("stock_out_date");
             reList.add(resStrings);
         }
         resultSet.close();
@@ -93,30 +93,21 @@ public class SaleManngerDataBase {
         ArrayList<String[]> reList = new ArrayList<>();
         Statement statement = connection.createStatement();
         ResultSet resultSet = 
-        statement.executeQuery("select * from v_sale_record where name='"+bookName
-                +"' order by sale_date;");
+        statement.executeQuery("select * from v_stock_out_record where book_name like '%"
+        +bookName+"%'");
         while (resultSet.next()) {
             String[] resStrings = new String[7];
             resStrings[0] = resultSet.getString("id");
-            resStrings[1] = resultSet.getString("name");
+            resStrings[1] = resultSet.getString("book_name");
             resStrings[2] = resultSet.getString("ISBN");
             resStrings[3] = resultSet.getString("price");
-            resStrings[4] = resultSet.getString("sale_size");
+            resStrings[4] = resultSet.getString("stock_out_size");
             resStrings[5] = resultSet.getString("total_price");
-            resStrings[6] = resultSet.getString("sale_date");
+            resStrings[6] = resultSet.getString("stock_out_date");
             reList.add(resStrings);
         }
         resultSet.close();
         statement.close();
         return reList;
     }
-    
-    public void stockOut(String orderNo, String number) throws SQLException
-    {
-        Statement statement = connection.createStatement();
-        statement.execute("exec p_stock_out "+orderNo+", "+number);
-        statement.close();
-    }
-    
-    
 }

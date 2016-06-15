@@ -3,7 +3,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
 
-public class GetConnectionSqlServer {
+public class DBConnection {
     public static final String DRIVERNAME = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     public static final String DATABASE = "BOOK_SALES";
     public static final String HOST = "172.16.21.36:1433";
@@ -42,9 +42,8 @@ public class GetConnectionSqlServer {
         statement.close();
     }
 
-    public static void main(String[] args){
-
-        Connection connection = getConnection();
-        System.out.println(connection);
+    public static void main(String[] args)
+    {
+        System.out.println(UserDBHelper.login("admin", "admin"));
     }
 }

@@ -15,9 +15,9 @@ import java.util.ArrayList;
  *
  * @author Henry
  */
-public class StatisticsDataBase {
+public class StatisticsDBHelper {
     Connection connection;
-    public StatisticsDataBase(Connection connection)
+    public StatisticsDBHelper(Connection connection)
     {
         this.connection = connection;
     }

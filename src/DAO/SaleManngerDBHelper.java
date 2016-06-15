@@ -15,9 +15,9 @@ import java.util.ArrayList;
  *
  * @author Henry
  */
-public class StockOutDataBase {
+public class SaleManngerDBHelper {
     Connection connection;
-    public StockOutDataBase(Connection connection)
+    public SaleManngerDBHelper(Connection connection)
     {
         this.connection = connection;
     }
@@ -26,17 +26,17 @@ public class StockOutDataBase {
     {
         Statement statement = connection.createStatement();
         ResultSet resultSet = 
-        statement.executeQuery("select * from v_stock_out_record where id="+orderNo);
+        statement.executeQuery("select * from v_sale_record where id="+orderNo);
         while (resultSet.next()) {
             String[] resStrings = new String[7];
             resStrings[0] = resultSet.getString("id");
-            resStrings[1] = resultSet.getString("book_name");
+            resStrings[1] = resultSet.getString("name");
             resStrings[2] = resultSet.getString("ISBN");
             resStrings[3] = resultSet.getString("price");
-            resStrings[4] = resultSet.getString("stock_out_size");
+            resStrings[4] = resultSet.getString("sale_size");
             resStrings[5] = resultSet.getString("total_price");
-            resStrings[6] = resultSet.getString("stock_out_date");
-            return resStrings;
+            resStrings[6] = resultSet.getString("sale_date");
+            return  resStrings;
         }
         resultSet.close();
         statement.close();
@@ -48,17 +48,17 @@ public class StockOutDataBase {
         ArrayList<String[]> reList = new ArrayList<>();
         Statement statement = connection.createStatement();
         ResultSet resultSet = 
-        statement.executeQuery("select * from v_stock_out_record where ISBN="
-        +ISBN);
+        statement.executeQuery("select * from v_sale_record where ISBN="+ISBN
+                +" order by sale_date;");
         while (resultSet.next()) {
             String[] resStrings = new String[7];
             resStrings[0] = resultSet.getString("id");
-            resStrings[1] = resultSet.getString("book_name");
+            resStrings[1] = resultSet.getString("name");
             resStrings[2] = resultSet.getString("ISBN");
             resStrings[3] = resultSet.getString("price");
-            resStrings[4] = resultSet.getString("stock_out_size");
+            resStrings[4] = resultSet.getString("sale_size");
             resStrings[5] = resultSet.getString("total_price");
-            resStrings[6] = resultSet.getString("stock_out_date");
+            resStrings[6] = resultSet.getString("sale_date");
             reList.add(resStrings);
         }
         resultSet.close();
@@ -66,21 +66,21 @@ public class StockOutDataBase {
         return reList;
     }
     
-    public ArrayList<String[]> getAll() throws SQLException
+    public ArrayList<String[]> getAllBooks() throws SQLException
     {
         ArrayList<String[]> reList = new ArrayList<>();
         Statement statement = connection.createStatement();
         ResultSet resultSet = 
-        statement.executeQuery("select * from v_stock_out_record");
+        statement.executeQuery("select * from v_sale_record order by sale_date;");
         while (resultSet.next()) {
             String[] resStrings = new String[7];
             resStrings[0] = resultSet.getString("id");
-            resStrings[1] = resultSet.getString("book_name");
+            resStrings[1] = resultSet.getString("name");
             resStrings[2] = resultSet.getString("ISBN");
             resStrings[3] = resultSet.getString("price");
-            resStrings[4] = resultSet.getString("stock_out_size");
+            resStrings[4] = resultSet.getString("sale_size");
             resStrings[5] = resultSet.getString("total_price");
-            resStrings[6] = resultSet.getString("stock_out_date");
+            resStrings[6] = resultSet.getString("sale_date");
             reList.add(resStrings);
         }
         resultSet.close();
@@ -93,21 +93,30 @@ public class StockOutDataBase {
         ArrayList<String[]> reList = new ArrayList<>();
         Statement statement = connection.createStatement();
         ResultSet resultSet = 
-        statement.executeQuery("select * from v_stock_out_record where book_name like '%"
-        +bookName+"%'");
+        statement.executeQuery("select * from v_sale_record where name='"+bookName
+                +"' order by sale_date;");
         while (resultSet.next()) {
             String[] resStrings = new String[7];
             resStrings[0] = resultSet.getString("id");
-            resStrings[1] = resultSet.getString("book_name");
+            resStrings[1] = resultSet.getString("name");
             resStrings[2] = resultSet.getString("ISBN");
             resStrings[3] = resultSet.getString("price");
-            resStrings[4] = resultSet.getString("stock_out_size");
+            resStrings[4] = resultSet.getString("sale_size");
             resStrings[5] = resultSet.getString("total_price");
-            resStrings[6] = resultSet.getString("stock_out_date");
+            resStrings[6] = resultSet.getString("sale_date");
             reList.add(resStrings);
         }
         resultSet.close();
         statement.close();
         return reList;
     }
+    
+    public void stockOut(String orderNo, String number) throws SQLException
+    {
+        Statement statement = connection.createStatement();
+        statement.execute("exec p_stock_out "+orderNo+", "+number);
+        statement.close();
+    }
+    
+    
 }

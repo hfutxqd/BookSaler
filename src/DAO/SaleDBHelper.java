@@ -14,9 +14,9 @@ import java.sql.Statement;
  *
  * @author Henry
  */
-public class SaleDataBase {
+public class SaleDBHelper {
     Connection connection;
-    public SaleDataBase(Connection connection)
+    public SaleDBHelper(Connection connection)
     {
         this.connection = connection;
     }
