@@ -12,7 +12,10 @@
     <title></title>
   </head>
   <body>
-  success
-  <h2><s:property value="message" /></h2>
+  <s:iterator value="data">
+    <br>
+    <s:property />
+    <br>
+  </s:iterator>
   </body>
 </html>

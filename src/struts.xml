@@ -17,5 +17,9 @@
         <action name="test" class="action.TestAction">
             <result name="login">/index.jsp</result>
         </action>
+
+        <action name="stockin" class="action.StockInAction">
+            <result name="success">/stockin.jsp</result>
+        </action>
     </package>
 </struts>
