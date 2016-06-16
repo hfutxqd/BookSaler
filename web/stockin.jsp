@@ -37,15 +37,15 @@
                 <s:iterator value="data">
 
                     <tr class="odd" role="row">
-                        <td><s:property value="test_key" /></td>
-                        <td><s:property value="test_key2" /></td>
-                        <td><s:property value="test_key3" /></td>
-                        <td><s:property value="test_key4" /></td>
-                        <td><s:property value="test_key5" /></td>
-                        <td><s:property value="test_key6" /></td>
-                        <td><s:property value="test_key7" /></td>
-                        <td><s:property value="test_key7" /></td>
-                        <td><s:property value="test_key7" /></td>
+                        <td><s:property value="sale_id" /></td>
+                        <td><s:property value="book_name" /></td>
+                        <td><s:property value="ISBN" /></td>
+                        <td><s:property value="author" /></td>
+                        <td><s:property value="publisher" /></td>
+                        <td><s:property value="price" /></td>
+                        <td><s:property value="stock_out_size" /></td>
+                        <td><s:property value="total_price" /></td>
+                        <td><s:property value="stock_out_date" /></td>
                     </tr>
                 </s:iterator>
                 </tbody>
