@@ -6,8 +6,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/animate.css">
+<%--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">--%>
+<%--<link rel="stylesheet" type="text/css" href="css/animate.css">--%>
+<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/animate.css/3.5.2/animate.css">
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="nav-header">
@@ -22,10 +25,10 @@
                     <a href="">退书</a>
                 </li>
                 <li>
-                    <a href="">库存表</a>
+                    <a href="">库存信息</a>
                 </li>
                 <li>
-                    <a href="">销售量表</a>
+                    <a href="">销售量记录</a>
                 </li>
                 <li>
                     <a href="">进货记录</a>
@@ -60,5 +63,7 @@
     </div>
 </nav>
 
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<%--<script src="js/jquery.min.js"></script>--%>
+<%--<script src="js/bootstrap.min.js"></script>--%>
+<script src="//cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
