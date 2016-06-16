@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <head>
     <title>Title</title>
@@ -14,6 +15,7 @@
 <jsp:include page="nav.jsp"></jsp:include>
 
 <div class="container">
+
     <div class="panel panel-default" style="margin-top: 80px">
         <div class="panel-heading">销售记录表</div>
         <div class="table-responsive">
@@ -32,24 +34,20 @@
                 </tr>
                 </thead>
                 <tbody id="saleRecordBody">
-                <%
-                    for (int i = 0; i < 5; i++) {
-                %>
-                <tr class="odd" role="row">
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>3</td>
-                </tr>
+                <s:iterator value="data">
 
-                <%
-                    }
-                %>
+                    <tr class="odd" role="row">
+                        <td><s:property value="test_key" /></td>
+                        <td><s:property value="test_key2" /></td>
+                        <td><s:property value="test_key3" /></td>
+                        <td><s:property value="test_key4" /></td>
+                        <td><s:property value="test_key5" /></td>
+                        <td><s:property value="test_key6" /></td>
+                        <td><s:property value="test_key7" /></td>
+                        <td><s:property value="test_key7" /></td>
+                        <td><s:property value="test_key7" /></td>
+                    </tr>
+                </s:iterator>
                 </tbody>
             </table>
         </div>
